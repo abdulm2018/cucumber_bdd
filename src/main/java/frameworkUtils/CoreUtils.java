@@ -126,12 +126,12 @@ public class CoreUtils {
 		}
 	}
 //-------------------Action Mouse Hover-------------------------
-	WebElement element = driver.findElement(By.xpath("?"));
+	/*WebElement element = driver.findElement(By.xpath("?"));
 	
 	Actions action = new Actions(driver);
 	
-	action.moveToElement(element)
-//--------------------------------------------------------------
+	action.moveToElement(element)*/
+//-------------------------------------------------------------- 
 	
 	public void click(WebElement element) {
 

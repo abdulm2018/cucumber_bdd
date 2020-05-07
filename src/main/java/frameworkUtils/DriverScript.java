@@ -2,6 +2,8 @@ package frameworkUtils;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class DriverScript extends CoreUtils{
@@ -14,6 +16,11 @@ public class DriverScript extends CoreUtils{
 			driver =new ChromeDriver(options);
 			//return new ChromeDriver(options);
 			
+		}else if(config.getData("BrowserName").equalsIgnoreCase("IE")) {
+			System.setProperty("webdriver.ie.driver","C:\\Selenium\\IEDriverServer.exe");
+			InternetExplorerOptions options = new InternetExplorerOptions().destructivelyEnsureCleanSession().ignoreZoomSettings().introduceFlakinessByIgnoringSecurityDomains().enablePersistentHovering();
+			driver =new InternetExplorerDriver(options);
+			driver.manage().window().maximize();
 		}
 		
 		

@@ -69,7 +69,7 @@ public class FlightSearchAction extends CoreUtils {
 		List<List<String>> allFlightDetails = getAllFlightDetails();
 		List<String> cheapestFlightDetails = allFlightDetails.get(0);
 		for (List<String> flightDetails : allFlightDetails) {
-			if (Integer.parseInt(cheapestFlightDetails.get(3).replace("$", "").trim()) > Integer.parseInt(flightDetails.get(3).replace("$", "").trim())) {
+			if (Integer.parseInt(cheapestFlightDetails.get(3).replaceAll("[$Rs,]", "").trim()) > Integer.parseInt(flightDetails.get(3).replaceAll("[$Rs,]", "").trim())) {
 				cheapestFlightDetails = flightDetails;
 				//System.out.println("---->"+cheapestFlightDetails);
 			}
