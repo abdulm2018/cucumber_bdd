@@ -10,14 +10,12 @@ import org.openqa.selenium.WebElement;
 
 import frameworkUtils.CoreUtils;
 import ui.ExpediaUI;
+import ui.FlightsSearchResultsUi;
+import ui.FlightsUi;
 
 public class FlightSearchAction extends CoreUtils {
 
-	public void clickFlightTab(String tabName) {
-
-		click(ExpediaUI.tabElement(tabName));
-
-	}
+	
 
 	public void clickOneWay(String flightType) {
 		click(ExpediaUI.flightType(flightType));
@@ -28,26 +26,26 @@ public class FlightSearchAction extends CoreUtils {
 	}
 
 	public void enterFlyingFrom(String flyingFrom) {
-		typeText(ExpediaUI.FLYING_FROM, flyingFrom);
-		pressEnterKey(ExpediaUI.FLYING_FROM);
+		typeText(FlightsUi.FLYING_FROM, flyingFrom);
+		pressEnterKey(FlightsUi.FLYING_FROM);
 	}
 
 	public void enterDestination(String destination) {
-		typeText(ExpediaUI.DESTINATION, destination);
-		pressEnterKey(ExpediaUI.DESTINATION);
+		typeText(FlightsUi.DESTINATION, destination);
+		pressEnterKey(FlightsUi.DESTINATION);
 	}
 
 	public void enterDepartingDate(String departingDate) {
-		typeText(ExpediaUI.DEPARTING, departingDate);
-		pressEscKey(ExpediaUI.DEPARTING);
+		typeText(FlightsUi.DEPARTING, departingDate);
+		pressEscKey(FlightsUi.DEPARTING);
 	}
 
 	public void clickSearch() {
-		click(ExpediaUI.SEARCH);
+		click(FlightsUi.SEARCH);
 	}
 
 	private List<WebElement> getSearchResults() {
-		return findElements(ExpediaUI.SEARCH_RESULT_ELEMENT);
+		return findElements(FlightsSearchResultsUi.SEARCH_RESULT_ELEMENT);
 	}
 
 	public List<List<String>> getAllFlightDetails() {
@@ -56,10 +54,10 @@ public class FlightSearchAction extends CoreUtils {
 		List<WebElement> searchResultElements = getSearchResults();
 		for (WebElement searchResultElement : searchResultElements) {
 			List<String> flightDetails = new ArrayList<String>();
-			flightDetails.add(searchResultElement.findElement(ExpediaUI.AIRLINE_NAME).getText());
-			flightDetails.add(searchResultElement.findElement(ExpediaUI.DEPARTURE_TIME).getText());
-			flightDetails.add(searchResultElement.findElement(ExpediaUI.ARRIVAL_TIME).getText());
-			flightDetails.add(searchResultElement.findElement(ExpediaUI.PRICE).getText());
+			flightDetails.add(searchResultElement.findElement(FlightsSearchResultsUi.AIRLINE_NAME).getText());
+			flightDetails.add(searchResultElement.findElement(FlightsSearchResultsUi.DEPARTURE_TIME).getText());
+			flightDetails.add(searchResultElement.findElement(FlightsSearchResultsUi.ARRIVAL_TIME).getText());
+			flightDetails.add(searchResultElement.findElement(FlightsSearchResultsUi.PRICE).getText());
 			allFlightDetails.add(flightDetails);
 		}
 		return allFlightDetails;
@@ -82,8 +80,8 @@ public class FlightSearchAction extends CoreUtils {
 		String cheapestFlight = getCheapestFlightDetails().get(3);
 		System.out.println("Cheapest flight price "+cheapestFlight);
 		for (WebElement searchResultElement : allSearchResults) {
-			if(searchResultElement.findElement(ExpediaUI.PRICE).getText().trim().equals(cheapestFlight.trim())) {
-				click(searchResultElement.findElement(ExpediaUI.SELECT_BUTTON));
+			if(searchResultElement.findElement(FlightsSearchResultsUi.PRICE).getText().trim().equals(cheapestFlight.trim())) {
+				click(searchResultElement.findElement(FlightsSearchResultsUi.SELECT_BUTTON));
 			}
 			
 		}

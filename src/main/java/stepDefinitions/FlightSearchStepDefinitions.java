@@ -6,16 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class FlightSearchStepDefinitions extends FlightSearchAction{
-	/*@Given("user is on the expedia default landing page")
-	public void user_is_on_the_expedia_default_landing_page() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new cucumber.api.PendingException();
-	}*/
 
-	@Given("user clicks on \"([^\"]*)\" tab")
-	public void user_clicks_on_tab(String string) {
-	    clickFlightTab(string);
-	}
 
 	@Given("user clicks on \"([^\"]*)\" button")
 	public void user_clicks_on_one_way_button(String flightType) {

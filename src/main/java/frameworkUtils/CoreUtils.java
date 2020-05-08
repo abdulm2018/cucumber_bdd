@@ -1,6 +1,7 @@
 package frameworkUtils;
 
 import java.awt.Desktop.Action;
+import java.io.File;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -18,7 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CoreUtils {
 	public static RemoteWebDriver driver;
-	public PropertiesReader config = new PropertiesReader(FrameworkParameters.configFilePath);
+	public PropertiesReader config = new PropertiesReader(System.getProperty("user.dir")+File.separator+"config.properties");
 	private WebDriverWait wait = new WebDriverWait(driver, 60);
 
 	public void launchApplication(String url) {

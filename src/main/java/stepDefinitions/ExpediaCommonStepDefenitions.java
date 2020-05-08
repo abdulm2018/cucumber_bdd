@@ -4,10 +4,15 @@ import actions.ExpediaAction;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
-public class ExpediaStepDefenitions extends ExpediaAction{
+public class ExpediaCommonStepDefenitions extends ExpediaAction{
 	@Given("user is on the expedia default landing page")
 	public void user_is_on_the_home_page() {
 	    navigateToExpediaHomePage();
+	}
+	
+	@Given("user clicks on \"([^\"]*)\" tab")
+	public void user_clicks_on_tab(String string) {
+	    clickTab(string);
 	}
 
 	@When("user clicks on Flights , flights tab should be selected")
